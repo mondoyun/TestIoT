@@ -82,6 +82,7 @@ int main(){
                 fgets(name, sizeof(name),stdin);
                 name[strcspn(name, "\n")] = 0; // 개행 문자 제거
                 createData(id,name);
+                break;
             case 2:
                 printf("읽어올 학번을 입력하세요:");
                 scanf("%d", &id);
