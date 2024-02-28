@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    //1. input.txt파일에 입력
+    FILE* fp = fopen("input.txt", "wt");
+    fprintf(fp,"%d %d", a, b);
+    fclose(fp);
+    //2. input.txt 파일을 읽어와 계산
+    FILE* fin = fopen("input.txt", "rt");
+    fscanf(fin, "%d %d", &a, &b);
+    int result = a * b;
+    fclose(fin);
+    int multiple = a * b;
+    FILE * fout = fopen("output.txt","wt");
+    fprintf(fout,"%d\n", result);
+    fclose(fp);
+    //3. output.txt 파일에 계산결과를 출력한다.
+    return 0;
+}
