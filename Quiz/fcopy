@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(){
+    // 파일 포인터 선언
+    FILE* src = fopen("src.png", "rb");
+    FILE* dst = fopen("dst.png", "wb");
+    char buf[20];
+    int readCnt;
+
+    while(1){
+        readCnt = fread((void *)buf, 1, sizeof (buf), src);
+
+        if(readCnt<sizeof(buf)){
+            if(feof(src) != 0) {
+                fwrite( (void*)buf, 1, readCnt, dst);
+                fputs("파일복사 완료", stdout);
+                break;
+            }else
+                puts("fail");
+            break;
+        }
+        fwrite((void*)buf, 1, sizeof(buf), dst);
+    }
+    return 0;
+}
